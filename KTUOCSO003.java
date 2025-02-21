@@ -22,7 +22,7 @@ Các số hoàn hảo:
 
  */
 import java.util.*;
-
+// using Eculid - Euler algorithm to find perfect number (Nếu p là số nguyên tố và 2p - 1 cũng là số nguyên tố thì : 2p-1 * (2p - 1) sẽ là một số hoàn hảo)
 /* 
 class Main {
 
@@ -102,11 +102,11 @@ class Main{
 }
 */
 
-class Main{
-    static int flag = 1;
+class KTUOCSO003{                   // need to change class name to Main when sumit code
+    static int flag = 1;            // 1: not perfect number, 0: perfect number (check codition) if flag = 0, break loop and countinue to next Input and reset flag = 1
     static Vector <Long> ListPerfectNumber = new Vector<>();
 
-    public static boolean isPrime(long num){
+    public static boolean isPrime(long num){            // check prime number 
         if (num < 2){
             return false;
         }
@@ -119,7 +119,7 @@ class Main{
     }
 
 
-    public static void PerfectNumber(){
+    public static void PerfectNumber(){                             // check perfect number, if correct then add to array vector ListPerfectNumber
         for (long i = 1; i <= 33; i++){
             if(isPrime(i)){
                 long tmp1 = (long) Math.pow(2, i) - 1;
@@ -137,16 +137,17 @@ class Main{
         Scanner numInput = new Scanner(System.in);
         long num = numInput.nextLong();
         for (long i = 0; i < num; i++){
+            flag = 1;
             long num1 = numInput.nextLong();
-            for (long j : ListPerfectNumber){
+            for (long j : ListPerfectNumber){                  // check if Input is perfect number in ListPerfectNumber
                 if (num1 == j){
-                    System.out.println(1);
+                    System.out.println(1);                   // is perfect number
                     flag = 0;
                     break;
                 }
             } 
             if (flag == 1){
-                System.out.println(0);
+                System.out.println(0);                     // not perfect number 
             }
         }
         numInput.close();
